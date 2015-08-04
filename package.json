@@ -1,6 +1,6 @@
 {
   "name": "tree-names",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common names for trees",
   "main": "trees.json",
   "scripts": {

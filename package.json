@@ -2,25 +2,53 @@
   "name": "tree-names",
   "version": "1.0.1",
   "description": "Common names for trees",
-  "main": "trees.json",
-  "scripts": {
-    "test": "standard"
-  },
-  "repository": "github:zeke/tree-names",
+  "license": "ISC",
   "keywords": [
     "trees",
     "words",
     "language",
     "English"
   ],
-  "author": "zeke",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zeke/tree-names/issues"
-  },
-  "homepage": "https://github.com/zeke/tree-names#readme",
+  "repository": "words/tree-names",
+  "bugs": "https://github.com/words/tree-names/issues",
+  "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+  "contributors": [
+    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
+  "main": "trees.json",
+  "files": [
+    "trees.json"
+  ],
+  "dependencies": {},
   "devDependencies": {
-    "lodash": "^3.10.0",
-    "standard": "^5.0.0"
+    "prettier": "^1.0.0",
+    "remark-cli": "^7.0.0",
+    "remark-preset-wooorm": "^6.0.0",
+    "tape": "^4.0.0",
+    "xo": "^0.25.0"
+  },
+  "scripts": {
+    "generate": "node build",
+    "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+    "test-api": "node test",
+    "test": "npm run generate && npm run format && npm run test-api"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "prettier": true,
+    "esnext": false
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }

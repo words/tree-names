@@ -1,13 +1,10 @@
-const fs = require('fs')
-const uniq = require('lodash').uniq
-const compact = require('lodash').compact
+var fs = require('fs')
 
-var trees = fs.readFileSync('./trees.txt', 'utf8')
+var trees = fs
+  .readFileSync('./trees.txt', 'utf8')
   .split('\n')
-  .map(function(line){
-    return line.trim()
-  })
+  .map(l => l.trim())
+  .filter(Boolean)
+  .filter((tree, index, all) => all.indexOf(tree) === index)
 
-trees = uniq(compact(trees))
-
-fs.writeFileSync('./trees.json', JSON.stringify(trees, null, 2))
+fs.writeFileSync('./trees.json', JSON.stringify(trees, null, 2) + '\n')
